@@ -1,0 +1,23 @@
+    <input type="text" id="search" name="search" value="<%= search.searchtoken %>" /><!-- mas 11/19 -->
+    <button class="btn search">Search</button><!-- mas 11/19 -->
+    <a href="#/new" class="btn btn-primary">New</a>
+    <!--<hr />-->
+    <table class="table striped">
+      <thead>
+        <tr>
+          <th>First Name</th><th>Last Name</th><th>Age</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% _.each(users, function(user) { userObj = user.toJSON(); %>
+          <tr>
+            <!-- mas: this works also w/o htmlEncode, which tdavis recommends using -->
+	    <td><%= userObj.firstname %></td>  <!-- this way of accesing firstname works only if i do userObj = user.toJSON() -->
+            <td><%= user.get('lastname') %></td>
+            <td><%= user.get('age') %></td>
+
+            <td><a class="btn" href="#/edit/<%= user.id %>">Edit</a></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>

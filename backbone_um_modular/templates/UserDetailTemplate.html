@@ -1,0 +1,19 @@
+
+   <!-- Christoph way: use div, not form,  no submit type button -->
+   <div class="edit-user-form">
+      <legend><%= user ? 'Edit' : 'New' %> User</legend>
+        <label>First Name</label>
+        <input id="firstname" type="text" value="<%= user ? user.get('firstname') : '' %>">
+        <label>Last Name</label>
+        <input id="lastname" type="text" value="<%= user ? user.get('lastname') : '' %>">
+        <label>Age</label>
+        <input id="age" type="text" value="<%= user ? user.get('age') : '' %>">
+        <hr />
+	   <button class="save"><%= user ? 'Update' : 'Create' %></button>
+       <% if(user) { %>
+        <input type="hidden" id="id" value="<%= user.id %>" />
+       <button data-user-id="<%= user.id %>" class="btn btn-danger delete">Delete</button>
+       <% }; %>
+	   <button class="btn cancel">Cancel</button>
+           <button class="btn reset">Reset</button>
+   </div>
